@@ -5,26 +5,23 @@ const findmyLocation = () => {
         console.log(position);
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        console.log(latitude + 'and'  + longitude);
+        // console.log(latitude + 'and' + longitude);  //returns 23.2189447 88.3530653
 
-        
-        // const geoAPI = `http://api.ipstack.com/2409:40e1:2b:6f34:64b0:689c:3a97:3ec6?access_key=7c26bbd0fd1d4bfa8e7400b482b6a531&format=1`
 
-        // fetch(geoAPI)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         status.textContent = data.zip;
-        //     })
+        const geoAPI = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=38cbe763f0af4634b91d0b82ce02cf22`
+
+        fetch(geoAPI)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                status.textContent = data.components.state;
+            })
     }
-
     const error = () => {
         status.innerHTML = "Error"
     }
-
-
-
-    navigator.geolocation.getCurrentPosition(success, error);
+    navigator.geolocation.getCurrentPosition(success, error); /*
+     returns coords: GeolocationCoordinates {latitude: 23.2189447, longitude: 88.3530653, altitude: null, accuracy: 1980.0358315387675, altitudeAccuracy: null, …}
+     timestamp: 1687185026892*/
 }
-
 document.getElementById("location").addEventListener("click", findmyLocation);
