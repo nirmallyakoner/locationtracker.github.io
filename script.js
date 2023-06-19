@@ -3,6 +3,9 @@ const findmyLocation= ()=>{
 
 const success=(position)=>{
     console.log(position);
+    const latitude=position.coords.latitude;
+    const longitude=position.coords.longitude;
+    console.log(latitude+""+longitude);
 }
 
 const error=()=>{
