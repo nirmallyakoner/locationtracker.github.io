@@ -12,7 +12,8 @@ const findmyLocation = () => {
         fetch(geoAPI)
             .then(res => res.json())
             .then(data => {
-                status.textContent = data.principalSubdivision
+                console.log(data);
+                status.textContent = data.principalSubdivision;
             })
     }
 
