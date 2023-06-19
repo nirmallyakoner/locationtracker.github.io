@@ -14,7 +14,7 @@ const findmyLocation = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                status.textContent = data.obj.results[0].formatted;
+                status.textContent = data.results[0].formatted;
             })
     }
     const error = () => {
